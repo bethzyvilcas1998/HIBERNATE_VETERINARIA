@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/07/2019 10:33:57 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entidades.Vacuna" table="vacuna" catalog="mascota" optimistic-lock="version">
+        <id name="idVacuna" type="int">
+            <column name="idVacuna" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreVacuna" type="string">
+            <column name="nombreVacuna" length="45" not-null="true" />
+        </property>
+        <property name="enfermedad" type="string">
+            <column name="enfermedad" length="45" not-null="true" />
+        </property>
+        <property name="tipoVacuna" type="string">
+            <column name="tipoVacuna" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

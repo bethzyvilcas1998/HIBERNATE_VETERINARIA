@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./TemplateVeterinaria.xhtml">
+
+
+            <ui:define name="content">
+                <p:growl id="msj" autoUpdate="true"/>
+                <h:form id="from">
+                    <p:panel>
+                        <f:facet name="header">
+                            <column>
+                                <p:outputLabel value="MANTENIMIENTO DE ASIGNACION CLIENTE A MASCOTA"/>  
+                            </column>
+                        </f:facet>
+                        <h:panelGrid columns="2">
+                            <p:outputLabel value="Cliente"/>
+                            <p:selectOneMenu value="#{mascotaporClienteBean.idCliente}">
+                                <f:selectItem itemLabel="--seleccione--"/>
+                                <f:selectItems value="#{mascotaporClienteBean.listaClientes}" var="cliente" itemLabel="#{cliente.nombreCliente}" itemValue="#{cliente.codigoCliente}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Mascota"/>
+                            <p:selectOneMenu value="#{mascotaporClienteBean.idMascota}">
+                                <f:selectItem itemLabel="--seleccione--"/>
+                                <f:selectItems value="#{mascotaporClienteBean.listaMascotas}" var="mascota" itemLabel="#{mascota.nombreMascota}" itemValue="#{mascota.idMascota}"/>
+                            </p:selectOneMenu>
+                             <p:outputLabel value="Estado"/>
+                            <p:selectOneMenu value="#{mascotaporClienteBean.mascotaporcliente.estado}">
+                                <f:selectItem itemLabel="--seleccione--"/>
+                                <f:selectItem itemLabel="Activo" itemValue="A"/>
+                                <f:selectItem itemLabel="Inactivo" itemValue="I"/>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
+                        <p:commandButton value="Guardar" action="#{mascotaporClienteBean.guardar()}"/>
+                        <p:commandButton value="Actualizar" action="#{mascotaporClienteBean.actualizar()}"/>
+                    </p:panel>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+
